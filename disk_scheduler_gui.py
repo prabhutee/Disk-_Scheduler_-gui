@@ -226,28 +226,35 @@ class DiskSchedulingApp:
     def show_help(self):
         help_text = """Disk Scheduling Algorithms:
 
-FCFS (First-Come First-Served):
-- Services requests in arrival order
-- Simple but often poor performance
+FCFS (First-Come, First-Served):
+-Simple and easy to implement
+-Processes requests in arrival order
+-Can result in high seek time
 
 SSTF (Shortest Seek Time First):
-- Selects nearest request to current head position
-- Can cause starvation
+-Selects the closest request
+-Reduces seek time significantly
+-May cause starvation for distant requests
 
 SCAN (Elevator Algorithm):
-- Moves in one direction to end, then reverses
-- Services requests along the way
+-Moves in one direction, then reverses
+-Services all requests along the way
+-Prevents starvation but may favor middle tracks
 
 C-SCAN (Circular SCAN):
-- Moves in one direction to end, then
-- Jumps to start and continues same direction
+-Moves in one direction only
+-Jumps back to the start after the last request
+-Provides uniform response times
 
 LOOK:
-- Similar to SCAN but reverses at last request
-- instead of physical end of disk
+-Moves only up to the last request
+-Avoids unnecessary head movement
+-More efficient than SCAN
 
 C-LOOK:
-- Circular version of LOOK algorithm"""
+-Circular version of LOOK
+-Jumps back to the first request after reaching the last
+-Reduces seek time for distributed requests"""
         
         help_window = tk.Toplevel()
         help_window.title("Algorithm Information")
